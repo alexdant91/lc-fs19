@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Titolo della pagina web!</title>
+    <meta property="og:title" content="Titolo!" />
+    <meta property="og:description" content="descrizione..." />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" >
+</head>
+<body>
+    <h1 class="nav__top-centre">
+        LO SMERDO CACATISSIM
+        <p>Questo è il primo paragrafo!</p>
+    </h1>
+    <p>Questo è il secondo paragrafo!</p>
+</body>
+</html>
