@@ -25,7 +25,7 @@ const utility = {
 
 // console.log(utility)
 
-// utility.log("from log")
+// utility.log("from log")git
 
 // console.log(a(5));
 // console.log(b(15));
