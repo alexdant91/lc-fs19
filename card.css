@@ -1,0 +1,39 @@
+#card {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+    padding: 120px 80px;
+    gap: 128px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.megaphone {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.silouhette {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.hemisphere {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 16px;
+}
