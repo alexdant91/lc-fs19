@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="caluclator">
+      <div class="result">
+        <input type="text" id="result" readonly value="" placeholder="0" />
+      </div>
+      <div class="btn-container">
+        <div class="operations">
+          <button class="operation" data-operation="PLUS">+</button>
+          <button class="operation" data-operation="MINUS">-</button>
+          <button class="operation" data-operation="MULTIPLY">x</button>
+          <button class="operation" data-operation="DIVIDE">/</button>
+        </div>
+        <div class="numbers-container">
+          <div class="numbers">
+            <button class="values" data-value="9">9</button>
+            <button class="values" data-value="8">8</button>
+            <button class="values" data-value="7">7</button>
+            <button class="values" data-value="6">6</button>
+            <button class="values" data-value="5">5</button>
+            <button class="values" data-value="4">4</button>
+            <button class="values" data-value="3">3</button>
+            <button class="values" data-value="2">2</button>
+            <button class="values" data-value="1">1</button>
+            <button class="values" data-value="0">0</button>
+            <button class="values" data-value=".">.</button>
+            <button class="operation" data-operation="CLEAR_ALL">AC</button>
+          </div>
+          <div class="equal">
+            <button class="operation" data-operation="EQUAL">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./calculator.v2.js"></script>
+  </body>
+</html>
