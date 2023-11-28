@@ -115,7 +115,7 @@ const searchData = (event) => {
         state.searchInfo.searchQuery = event.target.value;
     }
     state.data = [...state._data].filter((item) => {
-        return item[state.searchInfo.searchBy].toString().match(new RegExp(state.searchInfo.searchQuery, "ig"));
+        return item[state.searchInfo.searchBy].toString().match(new RegExp(state.searchInfo.searchQuery, "ig"));  //ig = insensitve global
     });
 
     if (state.searchInfo.searchQuery === "") {
