@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>seleziona quante righe per pagina</p>
+        <select id="limit">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="ALL">All</option>
+        </select>
+    </div>
+
+    <div>
+        <p> seleziona l' ordine di ricerca</p>
+        <select id="sortBy">
+            <option value="id">ID</option>
+            <option value="userId">UserID</option>
+            <option value="title">Title</option>
+            <option value="body">body</option>
+        </select>
+
+        <select id="sortMode">
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+    </div>
+
+    <div>
+        <p>seleziona il campo di ricerca</p>
+        <select id="searchBy">
+            <option value="id">ID</option>
+            <option value="userId">UserID</option>
+            <option value="title">Title</option>
+            <option value="body">body</option>
+        </select>
+        <input type="search" id="searchQuery" placeholder="cerca..." />
+        <span id="searchResult"></span>
+    </div>
+
+    <div>
+        <button id="prev" disabled>Prev</button>
+        <span id="currentPage">1</span>
+        of
+        <span id="totalPages">1</span>
+        <button id="next" disabled>Next</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>UserID</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script src="./index2.0.js"></script>
+</body>
+
+</html>
