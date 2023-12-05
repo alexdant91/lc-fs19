@@ -1,10 +1,16 @@
-import { Login } from "./components/Login.mjs";
-import { Profile } from "./components/profile.mjs";
+import { Navbar } from "./components/Navbar.mjs";
+import { Home } from "./pages/Home.mjs";
+import { Login } from "./pages/Login.mjs";
+import { Profile } from "./pages/Profile.mjs";
 
 const $root = document.querySelector("#root");
+const $head = document.querySelector("#head");
 
-const switchUI = (path = "/login") => {
+const switchUI = (path = "/") => {
     switch(path) {
+        case "/":
+            Home({ root: $root, onChangeUI: switchUI });
+            break;
         case "/login":
             Login({ root: $root, onChangeUI: switchUI });
             break;
@@ -16,5 +22,7 @@ const switchUI = (path = "/login") => {
             break;
     }
 }
+
+Navbar({ root: $head, onChangeUI: switchUI });
 
 switchUI();

@@ -2,17 +2,24 @@ import { internalMemory } from "../utilities/memory.mjs";
 
 export const Profile = (props = { root, onChangeUI }) => {
     const auth = internalMemory.get("auth");
+
+    if (!auth) {
+        return props.onChangeUI("/login");
+    }
+
     const state = {
         user: auth?.user || null,
         token: auth?.token || null,
     }
 
-    const handleLogout = () => {
-        internalMemory.remove("auth");
+    const handleLogout = (event) => {
+        if (event.target.id === "logout") {
+            internalMemory.remove("auth");
 
-        document.removeEventListener("click", handleLogout);
-        
-        props.onChangeUI("/login");
+            document.removeEventListener("click", handleLogout);
+
+            props.onChangeUI("/login");
+        }
     }
 
     document.addEventListener("click", handleLogout);
