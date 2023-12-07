@@ -6,7 +6,7 @@ const state = new State({
 
 setInterval(() => {
     state.setState("counter",(counter) =>{
-        return counter++;
+        return counter;
     });
 },2000);
 
