@@ -1,15 +1,26 @@
-import { _404 } from "../pages/_404.mjs";
-import { store } from "../store/index.mjs";
-import { plugins } from "./plugins.mjs";
-
+/**
+ * Get the root element of a specific slot.
+ * @param {string} slot_name - The name of the slot.
+ * @returns {Element} - The root element of the slot.
+ */
 export const $getSlotRoot = (slot_name) => {
     return document.querySelector(`slot[name="${slot_name}"]`);
 }
 
+/**
+ * Get the root element of a specific router.
+ * @param {string} id - The id of the router.
+ * @returns {Element} - The root element of the router.
+ */
 export const $getRouterRoot = (id) => {
     return document.querySelector(`#${id}`);
 }
 
+/**
+ * Create a listener object for a specific component.
+ * @param {string} component_name - The name of the component.
+ * @returns {Object} - The listener object.
+ */
 export const $listener = (component_name) => {
     const listeners = new Map();
 
@@ -18,14 +29,26 @@ export const $listener = (component_name) => {
     }
 
     return {
+        /**
+         * Add an event listener to the document.
+         * @param {string} event - The event name.
+         * @param {Function} cb - The callback function.
+         */
         on: (event, cb) => {
             document.addEventListener(event, cb);
             listeners.get(component_name).push({ event, cb });
         },
+        /**
+         * Remove an event listener from the document.
+         * @param {string} event - The event name.
+         */
         off: (event) => {
             const cb = listeners.get(component_name).find(({ event: _event }) => event === _event)?.cb;
             document.removeEventListener(event, cb);
         },
+        /**
+         * Remove all event listeners from the document.
+         */
         offAll: () => {
             listeners.get(component_name).forEach(({ event, cb }) => {
                 document.removeEventListener(event, cb);
@@ -34,6 +57,13 @@ export const $listener = (component_name) => {
     }
 }
 
+/**
+ * Render HTML content to a root element and execute watchers on state change.
+ * @param {Element} $root - The root element to render the HTML content.
+ * @param {Function} HTML - The function that returns the HTML content.
+ * @param {Array} watchers - The array of watchers to execute on state change.
+ * @returns {Function} - The render function.
+ */
 export const render = ($root, HTML, watchers = []) => {
     const _render = (cb) => {
         $root.innerHTML = HTML();
@@ -51,11 +81,19 @@ export const render = ($root, HTML, watchers = []) => {
     return _render;
 }
 
+/**
+ * Redirect to a specific path.
+ * @param {string} path - The path to redirect to. If not provided, it will use the current hash path or "/".
+ */
 export const $redirect = (path = window.location.hash.substring(1) || "/") => {
     window.location.hash = path;
     store.emit("PATH_CHANGE", path);
 }
 
+/**
+ * Get the query parameters from the current hash path.
+ * @returns {Object} - The query parameters object.
+ */
 export const $useQuery = () => {
     const query = window.location.hash.substring(1).split("?")[1].split("&").reduce((acc, curr) => {
         const [key, value] = curr.split("=");
@@ -65,6 +103,11 @@ export const $useQuery = () => {
     return query;
 }
 
+/**
+ * Get the route parameters from the current hash path based on the route name.
+ * @param {string} routeName - The name of the route.
+ * @returns {Object|null} - The route parameters object if the route matches, otherwise null.
+ */
 export const $useParams = (routeName) => {
     const route = routesMap.get(routeName);
     const path = (window.location.hash.substring(1) || "/").split("?")[0];
@@ -91,6 +134,11 @@ export const $useParams = (routeName) => {
 
 const routesMap = new Map();
 
+/**
+ * Creates a router object that handles routing and rendering of different routes.
+ * @param {Array} routes - An array of route objects.
+ * @returns {Object} - The router object.
+ */
 export const Router = (routes) => {
     const allHistory = new Map();
 
@@ -189,6 +237,10 @@ export const Router = (routes) => {
 
     return {
         plugins: {
+            /**
+             * Register plugins to be executed.
+             * @param {Array} _plugins - An array of plugin objects.
+             */
             register: (_plugins) => {
                 _plugins.forEach((plugin) => {
                     if (Object.keys(plugins).indexOf(plugin.name) !== -1) {
