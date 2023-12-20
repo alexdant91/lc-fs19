@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer components {
+        section > div {
+          @apply text-center border;
+        }
+        section > div > * {
+          @apply text-center m-1;
+        }
+      }
+    </style>
+  </head>
+  <body class="w-[99vw] dark:bg-slate-800 dark:text-white">
+    <section class="max-w-screen flex flex-row flex-wrap" id="sec"></section>
+    <script src="./index.js"></script>
+  </body>
+</html>

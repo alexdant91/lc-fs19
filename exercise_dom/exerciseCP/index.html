@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+         @layer components {
+            th {
+                @apply border
+            }
+            td {
+                @apply text-center border w-max
+            }
+            td > img {
+                @apply w-max
+            }
+         }
+    </style>
+</head>
+<body class="dark:text-white dark:bg-slate-800 w-screen overflow-x-hidden">
+    <table class="w-full">
+        <thead>
+            <tr>
+                <th>API</th>
+                <th>Description</th>
+                <th>Auth</th>
+                <th>HTTPS</th>
+                <th>Cors</th>
+                <th>Links</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+         @layer components {
+            th {
+                @apply w-1/5 border
+            }
+            td {
+                @apply text-center border w-1/5
+            }
+            td > img {
+                @apply w-max
+            }
+         }
+    </style>
+</head>
+<body class="w-screen dark:bg-slate-800 dark:text-white">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Thumbnail</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script src="./index.js"></script>
+</body>
+</html>
