@@ -1,63 +1,52 @@
-import { useState } from "react"
-import SpanCounter from "./components/SpanCounter";
-import DivCounter from "./components/DivCounter";
+import { useEffect, useState } from "react"
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  const [number, setNumber] = useState(1);
-  const [operationMode, setOperationMode] = useState("ADD");
-  const [container, setContainer] = useState("SPAN");
+    const [name, setName] = useState("");
+    const [isVisible, setIsVisible] = useState(false);
+    const [cd, setCd] = useState(3);
 
+    const handleNameInput = (event) => {
+        const value = event.target.value;
 
-  const handleClick  = () => {
-    setCounter((counter) => {
-      if (operationMode === "ADD") {
-        return counter += number;
-      } else if(operationMode === "REMOVE") {
-        return counter -= number;
-      }
-    });
-  }
+        setName(value)
+    }
 
-  const handleSelect = (event) => {
-    const value = event.target.value;
-    setOperationMode(value);
-  }
+    const handleToggleClick = () => {
+        setIsVisible((isVisible) => {
+            return !isVisible;
+        })
+    }
 
-  const handleInput = (event) => {
-    const value = Number(event.target.value);
-    setNumber(value);
-  }
+    useEffect(() => {
+        let timer;
+        let interval;
+        
+        if (isVisible) {
+            timer = setTimeout(() => {
+                setIsVisible(false);
+                clearTimeout(timer);
+                clearInterval(interval);
+                setCd(3);
+            },3000);
+            interval = setInterval(() => {
+                setCd((cd) => {
+                    return cd -= 1;
+                })
+            },1000)
+        }
+    }, [isVisible]);
 
-  const handleSelectContainer = (event) => {
-    const value = event.target.value;
-    setContainer(value);
-  }
-
-  return (
-    <>
-      <div>
-        <select value={container} onChange={handleSelectContainer}>
-          <option value="SPAN">SPAN</option>
-          <option value="DIV">DIV</option>
-        </select>
-        <select value={operationMode} onChange={handleSelect}>
-          <option value="ADD">ADD</option>
-          <option value="REMOVE">REMOVE</option>
-        </select>
-        <input type="number" value={number} onInput={handleInput}/>
-        <button onClick={handleClick}>ADD</button>
+    return (
+        <>
         <div>
-          {
-            container === "SPAN" ?
-            <SpanCounter counter={counter}/>
-            :
-            <DivCounter counter={counter}/>
-          }
+            <input type="text" value={name} onInput={handleNameInput} />
+            <button onClick={handleToggleClick}>{isVisible ? "HIDE" : "SHOW"}</button>
+            {
+                isVisible ? <span>Hello, {name} - ({cd}s)</span> : <></>
+            }
         </div>
-      </div> 
-    </>
-  )
+        </>
+    )
 }
 
-export default App
+export default App;
