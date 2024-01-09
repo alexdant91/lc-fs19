@@ -1,52 +1,52 @@
-import { useEffect, useState } from "react"
+import { useState } from "react";
+import CustomTable from "./components/for___App/CustomTable";
 
 const App = () => {
-    const [name, setName] = useState("");
-    const [isVisible, setIsVisible] = useState(false);
-    const [cd, setCd] = useState(3);
+    const [url, setUrl] = useState("");
+    const [isLoaded, setIsLoaded] = useState(false);
+    
+    const handleInputUrl = (event) => {
+        setUrl(event.target.value)
+    };
 
-    const handleNameInput = (event) => {
-        const value = event.target.value;
-
-        setName(value)
+    const handleClickLoad = () => {
+        setIsLoaded(true);
+    
     }
-
-    const handleToggleClick = () => {
-        setIsVisible((isVisible) => {
-            return !isVisible;
-        })
+    const handleClickReset = () => {
+        setIsLoaded(false);
     }
-
-    useEffect(() => {
-        let timer;
-        let interval;
-        
-        if (isVisible) {
-            timer = setTimeout(() => {
-                setIsVisible(false);
-                clearTimeout(timer);
-                clearInterval(interval);
-                setCd(3);
-            },3000);
-            interval = setInterval(() => {
-                setCd((cd) => {
-                    return cd -= 1;
-                })
-            },1000)
-        }
-    }, [isVisible]);
 
     return (
         <>
-        <div>
-            <input type="text" value={name} onInput={handleNameInput} />
-            <button onClick={handleToggleClick}>{isVisible ? "HIDE" : "SHOW"}</button>
-            {
-                isVisible ? <span>Hello, {name} - ({cd}s)</span> : <></>
-            }
-        </div>
+            <div className="flex p-12">
+                <input
+                    onInput={handleInputUrl}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="username"
+                    type="text"
+                    placeholder="Username"
+                />
+                <button
+                    onClick={handleClickLoad}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button"
+                >
+                    Load
+                </button>
+                <button
+                    onClick={handleClickReset}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="button"
+                >
+                    reset
+                </button>
+            </div>
+            <div className="p-12">
+                <CustomTable url={url} isLoaded={isLoaded}/>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default App;
