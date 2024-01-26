@@ -4,6 +4,7 @@ import Login from "./pages/Login"
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import DefaultLayout from "./layout/DefaultLayout";
+import Cart from "./pages/Cart";
 
 const ProtectedRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="login" element={<Login />} />
           <Route path="profile" element={
             <ProtectedRoute>
