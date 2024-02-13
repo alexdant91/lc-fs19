@@ -6,4 +6,9 @@ const app = express.Router();
  */
 app.use("/users", require("./routes/users"));
 
+/**
+ * @path /api/posts
+ */
+app.use("/posts", require("./routes/posts"));
+
 module.exports = app;
