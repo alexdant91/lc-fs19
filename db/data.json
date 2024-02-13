@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "full_name": "Tommaso Merli",
+      "age": 26
+    },
+    {
+      "id": 1707818388627,
+      "full_name": "Francesco Barranca",
+      "age": 23
+    },
+    {
+      "id": 1707818474995,
+      "full_name": "Francesco Barranca",
+      "age": 23
+    },
+    {
+      "id": 1707818917164,
+      "full_name": "Francesco Barranca",
+      "age": 23
+    }
+  ]
+}
